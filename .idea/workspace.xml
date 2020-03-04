@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="240f7a24-2d85-4827-8696-3f91c99297a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/.netbeans_automatic_build" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/.netbeans_update_resources" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/br/com/compilador/modelos/Lexico.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/br/com/compilador/modelos/TabelaSimbolos.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/br/com/compilador/modelos/Token.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/br/com/compilador/testes/TesteLexico.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compilador.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/funcionamento.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manifest.mf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compilador/br/com/compilador/modelos/Lexico.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compilador/br/com/compilador/modelos/TabelaSimbolos.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compilador/br/com/compilador/modelos/Token.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compilador/br/com/compilador/testes/TesteLexico.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/compilador/modelos/Lexico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/compilador/modelos/TabelaSimbolos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/compilador/modelos/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/compilador/testes/TesteLexico.java" afterDir="false" />
-    </list>
+    <list default="true" id="240f7a24-2d85-4827-8696-3f91c99297a5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
