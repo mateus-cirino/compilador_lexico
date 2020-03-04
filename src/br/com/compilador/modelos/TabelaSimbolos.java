@@ -72,9 +72,9 @@ public class TabelaSimbolos {
     }
 
     public Token retornaToken(Character c) {
-        if(!mapTokens.containsKey(c)) {
+        if(!this.mapTokens.containsKey(c)) {
             throw new RuntimeException("Nao existe esse caracter na minha linguagem");
         }
-        return mapTokens.get(c);
+        return this.mapTokens.get(c);
     }
 }
