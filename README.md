@@ -1,5 +1,5 @@
 # Compilador lexico
-## Dividi em três classes (Leexico, Token e Tabela de Simbolos)
+## Dividi em três classes (Lexico, Token e Tabela de Simbolos)
 ### Classe Token
 Esta classe representa informações a respeito do token, ainda não foi implementado mas futuramente ira guardar inclusive a linha e coluna que ele foi encontrado no código fonte.
 ### Classe Tabela de Simbolos
