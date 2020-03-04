@@ -5,10 +5,14 @@
  */
 package br.com.compilador.modelos;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.Stream;
 
 /**
  *
@@ -20,6 +24,7 @@ public class Lexico {
 
     public Lexico() {
         this.tabela = new TabelaSimbolos();
+        pilhaTokens = new Stack<>();
     }
 
     //recebo o arquivo
@@ -27,19 +32,20 @@ public class Lexico {
        //retiro o espaco em branco
     }
 
-    //recebo o arquivo
-    public void leituraCodigoFonte(FileInputStream fis) {
-        //enquanto tiver caracter no arquivo eu vou adicionando na pilha de tokens
-        /*
-        while(fis.has){
+    //recebo o caminho do arquivo
+    public void leituraCodigoFonte(String path) {
+        Scanner scanner;
         try{
-            Token token = retornaToken(fis.next);
-            pilhaTokens.push(token);
-        }catch(Exception e){
-        //trato a execao aqui, pego a linha e a coluna e o caracter do erro
+            scanner = new Scanner(new File(path));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("arquivo nao encontrado");
         }
+        while (scanner.hasNext()){
+            Stream<Character> lexemas = scanner.next()
+                    .chars()
+                    .mapToObj(c -> (char) c);
 
+            lexemas.forEach(c -> this.pilhaTokens.push(this.tabela.retornaToken(c)));
         }
-         */
     }
 }
