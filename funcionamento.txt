@@ -1,0 +1,5 @@
+(8 + 8)
+(8 * 8)
+
+sempre comeca com um parentese, depois um numero depois um operador (+ ou *) depois um outro numero e no fim o fechamento
+do parentese
