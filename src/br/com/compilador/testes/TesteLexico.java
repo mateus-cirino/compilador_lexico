@@ -7,6 +7,8 @@ package br.com.compilador.testes;
 
 import br.com.compilador.modelos.Lexico;
 
+import java.io.File;
+
 /**
  *
  * @author Aluno
@@ -14,6 +16,6 @@ import br.com.compilador.modelos.Lexico;
 public class TesteLexico {
     public static void main(String[] args) {
         Lexico lexico = new Lexico();
-        System.out.println(lexico.retornaListTokens());
+        lexico.leituraCodigoFonte("codigo.txt");
     }
 }
