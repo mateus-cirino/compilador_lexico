@@ -8,11 +8,8 @@ package br.com.compilador.modelos;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.stream.Stream;
 
 /**
  *
@@ -41,11 +38,17 @@ public class Lexico {
             throw new RuntimeException("arquivo nao encontrado");
         }
         while (scanner.hasNext()){
-            Stream<Character> lexemas = scanner.next()
-                    .chars()
-                    .mapToObj(c -> (char) c);
+            String lexema = scanner.next();
+            if(!lexema.equals(";")  && lexema.charAt(lexema.length() - 1) == ';'){
+                String new_lexema = lexema.substring(0, lexema.length() - 1);
+                String finalizador = ";";
 
-            lexemas.forEach(c -> this.pilhaTokens.push(this.tabela.retornaToken(c)));
+                this.pilhaTokens.push(this.tabela.retornaToken(new_lexema));
+                this.pilhaTokens.push(this.tabela.retornaToken(finalizador));
+            }
+            else{
+                this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+            }
         }
     }
 }
