@@ -6,6 +6,7 @@
 package br.com.compilador.modelos;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -13,68 +14,45 @@ import java.util.*;
  */
 public class TabelaSimbolos {
     private List<Token> listaTokens;
-    private Map<Character, Token> mapTokens;
+    private Map<String, Token> mapTokens;
+    private final Pattern variavelRegex = Pattern.compile("[A-Za-z]([A-Za-z]|[0-9]|_)*");
+    private final Pattern digitolRegex = Pattern.compile("[0-9]+(.[0-9]+)?");
+    private final Pattern atribuicaoRegex = Pattern.compile("[=]");
+    private final Pattern finalizadorRegex = Pattern.compile("[;]");
     
     public TabelaSimbolos() {
         this.mapTokens = new HashMap<>();
         this.listaTokens = new LinkedList<>();
-
-        //tokens permitidos: [(,),+,*,1,2,3,4,5]
-        Character abr_parenteseLex = '(';
-        Token abr_parenteseToken = new Token(0, abr_parenteseLex);
-
-        Character fec_parenteseLex = ')';
-        Token fec_parenteseToken = new Token(1, fec_parenteseLex);
-
-        Character somaLex = '+';
-        Token somaToken = new Token(2, somaLex);
-
-        Character multLex = '*';
-        Token multToken = new Token(3, multLex);
-
-        Character umLex = '1';
-        Token umToken = new Token(4, umLex);
-
-        Character doisLex = '2';
-        Token doisToken = new Token(5, doisLex);
-
-        Character tresLex = '3';
-        Token tresToken = new Token(6, tresLex);
-
-        Character quatroLex = '4';
-        Token quatroToken = new Token(7, quatroLex);
-
-        Character cincoLex = '5';
-        Token cincoToken = new Token(8, cincoLex);
-
-        //adiciona os tokens permitidos da linguagem na lista
-        this.listaTokens.add(abr_parenteseToken);
-        this.listaTokens.add(fec_parenteseToken);
-        this.listaTokens.add(somaToken);
-        this.listaTokens.add(multToken);
-        this.listaTokens.add(umToken);
-        this.listaTokens.add(doisToken);
-        this.listaTokens.add(tresToken);
-        this.listaTokens.add(quatroToken);
-        this.listaTokens.add(cincoToken);
-
-        //adiciona os tokens no map, para que possa ser possível
-        //receber um caracter e devolver um token
-        this.mapTokens.put(abr_parenteseToken.getCaracter(), abr_parenteseToken);
-        this.mapTokens.put(fec_parenteseToken.getCaracter(), fec_parenteseToken);
-        this.mapTokens.put(somaToken.getCaracter(), somaToken);
-        this.mapTokens.put(multToken.getCaracter(), multToken);
-        this.mapTokens.put(umToken.getCaracter(), umToken);
-        this.mapTokens.put(doisToken.getCaracter(), doisToken);
-        this.mapTokens.put(tresToken.getCaracter(), tresToken);
-        this.mapTokens.put(quatroToken.getCaracter(), quatroToken);
-        this.mapTokens.put(cincoToken.getCaracter(), cincoToken);
     }
 
-    public Token retornaToken(Character c) {
-        if(!this.mapTokens.containsKey(c)) {
-            throw new RuntimeException("Nao existe esse caracter na minha linguagem");
+    public Token retornaToken(String lexema) {
+
+        if(!this.mapTokens.containsKey(lexema)){
+            if(this.variavelRegex.matcher(lexema).matches()){
+                Token tokenVar = new Token("variavel", lexema);
+                this.listaTokens.add(tokenVar);
+                this.mapTokens.put(lexema, tokenVar);
+                return tokenVar;
+            }else if(this.digitolRegex.matcher(lexema).matches()){
+                Token tokenDig = new Token("digito", lexema);
+                this.listaTokens.add(tokenDig);
+                this.mapTokens.put(lexema, tokenDig);
+                return tokenDig;
+            }else if(this.atribuicaoRegex.matcher(lexema).matches()){
+                Token tokenAtrib = new Token("atribuicao", lexema);
+                this.listaTokens.add(tokenAtrib);
+                this.mapTokens.put(lexema, tokenAtrib);
+                return tokenAtrib;
+            }else if(this.finalizadorRegex.matcher(lexema).matches()){
+                Token tokenFinaliz = new Token("finalizador", lexema);
+                this.listaTokens.add(tokenFinaliz);
+                this.mapTokens.put(lexema, tokenFinaliz);
+                return tokenFinaliz;
+            }else{
+                System.out.println(lexema);
+                throw new RuntimeException("lexema inválido");
+            }
         }
-        return this.mapTokens.get(c);
+        return this.mapTokens.get(lexema);
     }
 }
