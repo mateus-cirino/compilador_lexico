@@ -7,8 +7,6 @@ package br.com.compilador.testes;
 
 import br.com.compilador.modelos.Lexico;
 
-import java.io.File;
-
 /**
  *
  * @author Aluno
