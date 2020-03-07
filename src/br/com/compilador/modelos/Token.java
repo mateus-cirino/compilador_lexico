@@ -10,22 +10,22 @@ package br.com.compilador.modelos;
  * @author Aluno
  */
 public class Token {
-    private Integer codigo;
+    private String type;
     private Integer linha;
     private Integer coluna;
-    private Character caracter;
+    private String lexema;
     
-    public Token(Integer codigo, Character caracter) {
-        this.codigo = codigo;
-        this.caracter = caracter;
+    public Token(String type, String lexema) {
+        this.type = type;
+        this.lexema = lexema;
     }
 
-    public Character getCaracter() {
-        return this.caracter;
+    public String getLexema() {
+        return this.lexema;
     }
 
     @Override
     public String toString() {
-        return "[ " + Integer.toString(this.codigo) + " " + this.caracter + " ]";
+        return "[ " + this.type + " " + this.lexema + " ]";
     }
 }
