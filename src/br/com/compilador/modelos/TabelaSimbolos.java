@@ -49,7 +49,6 @@ public class TabelaSimbolos {
                 this.mapTokens.put(lexema, tokenFinaliz);
                 return tokenFinaliz;
             }else{
-                System.out.println(lexema);
                 throw new RuntimeException("lexema inválido");
             }
         }
