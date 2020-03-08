@@ -24,35 +24,48 @@ public class Lexico {
         pilhaTokens = new Stack<>();
     }
 
-    //recebo o arquivo
-    public void tiraEspacoBranco(FileInputStream fis) {
-       //retiro o espaco em branco
-    }
-
     //recebo o caminho do arquivo
     public void leituraCodigoFonte(String path) {
         Scanner scanner;
+        String linha;
+        String lexema = "";
         try{
             scanner = new Scanner(new File(path));
         } catch (FileNotFoundException e) {
             throw new RuntimeException("arquivo nao encontrado");
         }
-        while (scanner.hasNext()){
-            String lexema = scanner.next();
-            if(!lexema.equals(";")  && lexema.charAt(lexema.length() - 1) == ';'){
-                String new_lexema = lexema.substring(0, lexema.length() - 1);
-                String finalizador = ";";
 
-                this.pilhaTokens.push(this.tabela.retornaToken(new_lexema));
-                this.pilhaTokens.push(this.tabela.retornaToken(finalizador));
-            }else if(!lexema.equals("=")  && lexema.charAt(lexema.length() - 1) == '='){
-                String new_lexema = lexema.substring(0, lexema.length() - 1);
-                String atribuicao = "=";
-
-                this.pilhaTokens.push(this.tabela.retornaToken(new_lexema));
-                this.pilhaTokens.push(this.tabela.retornaToken(atribuicao));
-            }else{
-                this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+        while(scanner.hasNextLine()){
+            linha = scanner.nextLine();
+            linha = linha.replaceAll(" ", "");
+            if(!linha.startsWith("//", 0) && !linha.startsWith("#", 0)){
+                for(int i = 0; i < linha.length(); i++){
+                    if(linha.charAt(i) == '='){
+                        if(!lexema.equals("")){
+                            this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+                            lexema = "=";
+                            this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+                            lexema = "";
+                        }else{
+                            lexema = "=";
+                            this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+                            lexema = "";
+                        }
+                    }else if(linha.charAt(i) == ';'){
+                        if(!lexema.equals("")){
+                            this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+                            lexema = ";";
+                            this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+                            lexema = "";
+                        }else{
+                            lexema = ";";
+                            this.pilhaTokens.push(this.tabela.retornaToken(lexema));
+                            lexema = "";
+                        }
+                    }else{
+                        lexema += Character.toString(linha.charAt(i));
+                    }
+                }
             }
         }
         System.out.println(this.pilhaTokens);
