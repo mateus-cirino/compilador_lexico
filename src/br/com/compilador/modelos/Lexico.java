@@ -68,6 +68,5 @@ public class Lexico {
                 }
             }
         }
-        System.out.println(this.pilhaTokens);
     }
 }
