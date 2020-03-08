@@ -8,4 +8,4 @@ Esta classe é responsável por validar os lexemas permitidos na linguagem atrav
 Esta classe e responsavel por retirar os espaços em branco, comentarios e etc, alem de ir coletando cada token, mandando para a tabela de simbolos e inserindo em uma pilha de tokens.
 
 ### Agradecimento
-Muito obrigado [Geraldo](https://github.com/G3ra1d0) por fazer os patterns
+Muito obrigado [Geraldo](https://github.com/G3ra1d0) por fazer os patterns.
