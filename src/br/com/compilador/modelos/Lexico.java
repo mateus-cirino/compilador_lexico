@@ -45,10 +45,16 @@ public class Lexico {
 
                 this.pilhaTokens.push(this.tabela.retornaToken(new_lexema));
                 this.pilhaTokens.push(this.tabela.retornaToken(finalizador));
-            }
-            else{
+            }else if(!lexema.equals("=")  && lexema.charAt(lexema.length() - 1) == '='){
+                String new_lexema = lexema.substring(0, lexema.length() - 1);
+                String atribuicao = "=";
+
+                this.pilhaTokens.push(this.tabela.retornaToken(new_lexema));
+                this.pilhaTokens.push(this.tabela.retornaToken(atribuicao));
+            }else{
                 this.pilhaTokens.push(this.tabela.retornaToken(lexema));
             }
         }
+        System.out.println(this.pilhaTokens);
     }
 }
