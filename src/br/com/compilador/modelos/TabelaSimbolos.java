@@ -49,7 +49,7 @@ public class TabelaSimbolos {
                 this.mapTokens.put(lexema, tokenFinaliz);
                 return tokenFinaliz;
             }else{
-                throw new RuntimeException("lexema inválido");
+                throw new RuntimeException("lexema inválido " + lexema);
             }
         }
         return this.mapTokens.get(lexema);
